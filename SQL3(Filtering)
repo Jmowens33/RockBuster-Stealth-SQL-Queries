@@ -1,0 +1,52 @@
+#A few queries demonstrating filtering the database for specific filtering requests
+
+#Film title contains the word Uptown in any position
+
+SELECT film_id,
+ title,
+ description
+FROM film
+WHERE title LIKE '%Uptown%'
+
+
+#Film length is more than 120 minutes and rental rate is more than 2.99
+
+SELECT film_id,
+ title,
+ description,
+ length,
+ rental_rate
+FROM film
+WHERE length > 120 AND
+rental_rate > 2.99
+
+
+#Rental duration is between 3 and 7 days (where 3 and 7 aren’t inclusive
+
+SELECT film_id,
+ title,
+ description,
+ rental_duration
+FROM film
+WHERE rental_duration >3 AND
+rental_duration <7
+
+
+#Film rating is either PG or G
+
+SELECT film_id,
+ title,
+ description,
+ rating
+FROM film
+WHERE rating IN ('PG','G')
+
+
+#Aggregating columns to make output easier for potential coworkers to understand
+
+SELECT COUNT(film_id) AS count_of_movies,
+ AVG(rental_rate) AS average_movie_rental_rate,
+ MIN(rental_duration) AS minimum_rental_duration,
+ MAX(rental_duration) AS maximum_rental_duration
+FROM film
+WHERE rating IN ('PG','G'
