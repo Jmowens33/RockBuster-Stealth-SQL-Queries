@@ -1,0 +1,9 @@
+#Simple query to find what genres exist in category table
+
+SELECT category_id, name FROM category
+
+
+#Simple follow-up query to add genres to the category table
+
+INSERT INTO category(category_id, name)
+VALUES(17,'Thriller'),(18,'Crime'),(19,'Mystery'),(20,'Romance'),(21,'War')
