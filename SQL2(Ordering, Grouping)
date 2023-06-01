@@ -1,0 +1,33 @@
+#Ordering by film title and release year, in descending order.
+
+SELECT title, release_year, rental_rate
+FROM film
+ORDER BY title, release_year DESC, rental_rate DESC
+
+
+#Grouping average rental rate by rating
+
+SELECT rating, AVG(rental_rate) AS average_rental_rate
+FROM film
+GROUP BY rating
+
+
+#Minimum and maximum rental durations for each rating category
+
+SELECT rating, MIN(rental_duration) AS min_rental_duration, MAX(rental_duration) AS
+max_rental_duration
+FROM film
+GROUP BY rating
+
+
+#Minimum and maximum replacement cost for each rating category with custom ordering
+
+SELECT rating, MIN(replacement_cost) AS minimum_replacement_cost, MAX(replacement_cost) AS
+maximum_replacement_cost
+FROM film
+GROUP BY rating
+ORDER BY CASE WHEN rating = 'G' THEN '1'
+ WHEN rating = 'PG' THEN '2'
+ WHEN rating = 'PG-13' THEN '3'
+ WHEN rating = 'R' THEN '4'
+ WHEN rating = 'NC-17' THEN '5'
